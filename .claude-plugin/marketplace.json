@@ -1,0 +1,16 @@
+{
+  "name": "naamdog-skills",
+  "description": "Skills for getting genuinely good output out of AI, not merely finished output.",
+  "owner": {
+    "name": "Mike Naameh"
+  },
+  "plugins": [
+    {
+      "name": "world-class-results",
+      "source": "./",
+      "description": "Stops AI output landing at 7/10. Rate against a named bar with cited evidence, find the gaps, apply the fixes, verify, rescore, stop.",
+      "category": "quality",
+      "tags": ["quality", "review", "critique", "rubric", "calibration"]
+    }
+  ]
+}

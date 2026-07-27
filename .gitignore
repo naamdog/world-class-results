@@ -1,0 +1,10 @@
+# Local agent state — machine-specific, not for publication
+.claude/settings.local.json
+.claude/history/
+.grok/
+.codex/
+
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini
