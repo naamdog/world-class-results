@@ -71,7 +71,7 @@ One skill, three homes. Claude Code and Codex both read a `SKILL.md` with `name`
 ### Fastest path — the installer
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/world-class-results.git && cd world-class-results && ./install.sh
+git clone https://github.com/naamdog/world-class-results.git && cd world-class-results && ./install.sh
 ```
 
 On Windows: `.\install.ps1`. Both take targets — `./install.sh codex`, `.\install.ps1 -Target claude,grok` — and default to all three.
@@ -87,7 +87,7 @@ On Windows: `.\install.ps1`. Both take targets — `./install.sh codex`, `.\inst
 This repo is both a plugin and its own marketplace, which also gets you the `/world-class` slash command and one-command updates:
 
 ```bash
-/plugin marketplace add YOUR-USERNAME/world-class-results
+/plugin marketplace add naamdog/world-class-results
 ```
 
 ```bash
