@@ -1,7 +1,7 @@
 {
   "name": "world-class-results",
   "description": "Stops AI output landing at 7/10. Sets a bar and a named comparator before scoring, rates against it with cited evidence, finds the gaps, applies the fixes, verifies them, and rescores — with anti-inflation rules and a stop condition.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": {
     "name": "Mike Naameh"
   },

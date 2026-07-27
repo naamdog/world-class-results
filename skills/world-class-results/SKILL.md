@@ -50,6 +50,10 @@ Break these and the skill produces flattery instead of quality.
 ## The Loop
 
 ### 0. Frame (3 lines, always)
+
+**First, the wrong-artifact check.** Should this exist, in this form, at all? If the honest answer is that the real fix is a different artifact, a product change, or deleting it — **say that in line one of your response, before the scorecard.** Then rate what's in front of you on its own terms anyway. Naming the wrong artifact *is* the world-class answer; burying it in a closing note is not.
+
+Then:
 - **Artifact:** what exactly is being rated (name the file / section / deliverable)
 - **Judge:** who decides if this is good — the actual audience, named. "A CFO skimming on a phone", not "users".
 - **Bar:** what 10/10 means *to that judge*, plus a named real-world comparator you're measuring against.
@@ -122,17 +126,28 @@ Keep it under 20 lines. If the scorecard is longer than the improvement, you did
 
 ## Depth Modes
 
-**Quick (default for small artifacts):** three lines — score with one cited reason, the single biggest gap, the fix. Applied inline. No scorecard.
+**Choose the mode before step 0. Quick is the default. Standard must be earned.**
 
-**Standard (default):** the loop above, one adversarial lens.
+### Quick — use unless a Standard trigger fires
+Three to six lines, inline: the score with one cited reason, the single biggest gap, the fix — applied. **No scorecard, no dimension table, no kill shot, no rescore.**
 
-**Expert Panel (opt-in only):** derive 3–5 lenses for this artifact's actual field and score against each — see `references/lenses.md`. Mix 2–3 home-field lenses with at least one deliberately foreign one; that's where the non-obvious gaps live. Materially more expensive and slower.
+### Standard — only when ALL THREE hold
+1. The artifact is a file, document, page, or feature — **not** a sentence, paragraph, tweet, subject line, or single chat message
+2. It took real work to produce, or real money or reputation rides on it
+3. There is more than one way it can fail
 
-**Offer Panel mode with one question, only when the artifact is high-stakes (public, paid, or reputational). Never enter it silently.**
+Fewer than three? Quick. **If the scorecard would be longer than the artifact, you are in the wrong mode.**
+
+### Expert Panel — opt-in, and rarely offered
+Derive 3–5 lenses for this artifact's actual field and score against each — see `references/lenses.md`. Mix 2–3 home-field lenses with at least one deliberately foreign one. Materially slower and more expensive.
+
+**Offer it at most ONCE per conversation, and only when the artifact is BOTH high-stakes (public, paid, or reputational) AND substantial (a multi-section document, a shipped feature, a full page — not a single asset).** Both, not either.
+
+Already offered once? Don't offer again. In doubt? Don't offer. **An offer that appears on every pass is noise, and noise gets ignored** — which destroys the signal for the artifact that genuinely warrants it.
 
 > Standard pass, or Expert Panel? Panel derives several field-specific lenses and scores against each — sharper, notably slower and more expensive.
 
-Then proceed with Standard as the default if the user doesn't answer.
+Proceed with Standard as the default if the user doesn't answer.
 
 ## Red Flags — you are producing flattery, not quality
 
@@ -145,6 +160,9 @@ Then proceed with Standard as the default if the user doesn't answer.
 | No comparator named | The rating is uncalibrated. It means nothing. |
 | You cited an expert you can't ground | Fabricated attribution. Drop the name, keep the question. |
 | The lens came from a list rather than the field | Force-fitting. Cialdini on a surgical checklist finds nothing. Derive from the artifact. |
+| The scorecard is longer than the artifact | Wrong mode. You owed them Quick. |
+| You offered Expert Panel again | Once per conversation, both gates, or not at all. |
+| The artifact shouldn't exist and you said so at the end | Line one, or it doesn't count. |
 | The fix list grew every round | Scope creep wearing a quality costume. Apply Rule 9. |
 | You claimed "fixed" without running/reading it | Rule 6. Go verify. |
 | Round 4+ | You blew the stop condition. Ship it and name what's left. |

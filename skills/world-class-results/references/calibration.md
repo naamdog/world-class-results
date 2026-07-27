@@ -29,6 +29,8 @@ Every score cites a specific observable — a line, a section, a measurement, a 
 **2. First-pass ceiling of 7 on anything unverified.**
 You may not score above 7 on a dimension you have not actually checked end to end. Not read it fully? Not run it? Ceiling of 7.
 
+*Partly verified counts as unverified.* If any part of what the dimension rests on is unchecked — one untested query string, one unexecuted migration, one screen you didn't open — the ceiling applies to the whole dimension. Then say which part is unchecked and what would close it. The alternative is a score that quietly averages "proven" with "assumed", which is exactly what Rule 4 exists to prevent one level up.
+
 **3. Never a 9 or 10 on your own first draft.** No exceptions. The first draft has not yet met a hostile reader.
 
 **4. A 9 or 10 requires a named comparator.**

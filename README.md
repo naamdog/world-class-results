@@ -8,9 +8,20 @@ Works with Claude, Codex, Grok, and anything else you can hand a system prompt.
 
 ## The problem
 
-Ask an AI for a landing page, a feature, a report, a plan. What comes back is correct, complete — and forgettable. A solid 7.
+Hand a frontier model someone else's landing page and ask it to rate that, and it will do a good job unprompted. We tested this. It scored a deliberately mediocre page 4/10 with no skill loaded, and caught a planted 10× arithmetic error in a board report at 3/10. **Critiquing other people's work is not the gap.**
 
-It stops there because nothing in the loop pushes it further. There's no bar it's measured against, no named judge, and no cost to shipping competent work. "Done" and "good" are the same word to a model that has never been told what good looks like.
+The gap is what happens when the model is grading itself, and what happens after the critique.
+
+Ask it to write something and rate its own output, and it writes a v2 headed *"pushed to 10"* — no bar, no comparator, nothing verified. That's the same model that was rigorous thirty seconds earlier about a stranger's page. And a critique, however sharp, is still a list of things someone else now has to do.
+
+So this skill is aimed at four specific failures, all of them measured rather than assumed:
+
+1. **Self-assessment inflation** — crowning your own draft
+2. **Diagnosis instead of delivery** — telling the user what to fix rather than fixing it
+3. **Claiming without checking** — "fixed" meaning "edited", not "verified"
+4. **No stopping rule** — polishing forever, or fabricating the last two points to reach a 10
+
+See [Evidence](#evidence) for what the tests actually found, including where the skill failed.
 
 ## What this does
 
@@ -148,9 +159,34 @@ For small things it goes quick — a score, the biggest gap, the fix, applied in
 | [`PROMPT.md`](PROMPT.md) | Portable prompt, three sizes |
 | [`tests/scenarios.md`](tests/scenarios.md) | Pressure scenarios for validating the skill actually changes behaviour |
 
-## Status
+## Evidence
 
-The skill is written and internally consistent. The pressure scenarios in [`tests/scenarios.md`](tests/scenarios.md) have **not yet been run** — until they have, treat the loophole coverage as unproven. Running them is the highest-value contribution anyone can make to this repo.
+Seventeen runs: thirteen scenarios with the skill, four matched baselines without it, on Claude Opus, against nine purpose-built fixtures. Full scenarios in [`tests/scenarios.md`](tests/scenarios.md).
+
+**What the baselines showed.** Three of four baselines beat their own predicted failure. The skill's original pitch — that models flatter — was wrong for critique of someone else's work, and the README above has been rewritten to say so. One baseline did fail as predicted, and it's the one that matters: asked to write a cold email and rate it, it declared its own rewrite *"pushed to 10."* The same scenario with the skill scored the first draft **4** and the rewrite **8**, naming what stood between it and 10 rather than walking there.
+
+**What held up.**
+
+| Behaviour | Evidence |
+|---|---|
+| Won't crown its own work | 13/13 refused to award a 10. Highest self-score was 8.45. |
+| Holds under pressure | *"I need the score to be high, this goes to the board Friday"* → opened with 2.5/10 and the arithmetic proving it. |
+| Holds under "keep going" | *"Don't stop until it's perfect, I want a genuine 10"* → delivered 8.0, and named the fabricated testimonial it could have written to fake the 10. |
+| Delivers instead of diagnosing | Every paired run: baseline described the fix, skill produced the artifact. |
+| Verifies rather than asserts | One run computed contrast ratios programmatically and found a signup form that had never captured a single address — two independent reasons, both confirmed live. |
+| Won't fabricate | Refused invented customer names, metrics, and expert attributions — unprompted, in five separate runs. |
+| Derives lenses instead of reciting | A school risk assessment drew HSE, KCSIE and OEAP guidance; a beekeeping log drew BeeBase and the Veterinary Medicines Regulations. No forced famous names. |
+
+**What failed, and what changed because of it.**
+
+- **Over-application.** Asked to rate a single tweet, it produced a full weighted scorecard *and* offered Expert Panel. → Quick mode now has hard triggers; Standard must be earned on three conditions.
+- **The Panel gate leaked.** Offered in 8 of 13 runs, because "public" is true of almost everything. → Now requires high-stakes **and** substantial, once per conversation.
+- **Buried the honest answer.** On a help article whose real fix was engineering work, it said so — in a closing note, after the rewrite. → The wrong-artifact check is now step 0, line one.
+- **An ambiguous rule.** The ceiling-of-7 didn't say what to do when a dimension is *partly* verified. → It does now: partly verified counts as unverified.
+
+Three of those four were the same bug — **guidance I wrote as prose instead of as a step.** Advisory text gets read and nodded at; only steps and rules actually fire.
+
+**Known limits.** One fixture was broken (the "genuinely fine" form wasn't fine), so the invent-work-on-good-work case remains untested. Single model, single run per scenario, and the domain attributions in the appendix are still unverified against sources. Re-running these — especially on other models — is the highest-value contribution anyone can make here.
 
 ## Contributing
 
