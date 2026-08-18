@@ -41,7 +41,7 @@ Break these and the skill produces flattery instead of quality.
 3. **Never award your own first draft a 9 or 10.** Not once. If you think it's a 10, you have not found the bar yet.
 4. **Overall score ≤ lowest dimension + 1.** World class fails at the weakest link. An average hides the thing that kills you.
 5. **Fix, don't propose.** Default is to *apply* the improvements. Only list-without-doing when the fix needs a decision, an asset, or access you don't have — and then say exactly what you need and from whom.
-6. **Verify before you claim.** Ran the tests, opened the page, re-read it end to end, checked the number. No verification, no "fixed".
+6. **Verify before you claim — and say so plainly when you can't.** Ran the tests, opened the page, re-read it end to end, checked the number. No verification, no "fixed". When verification is genuinely impossible — no access, no credentials, an external system you cannot read — that is a **third outcome, not a licence to assert**: mark the claim `unverified`, name what would settle it and who has it, and cap that dimension at 7. Never let "I couldn't check" quietly become "it's fine". An unverified claim dressed as a checked one is the most expensive failure this skill can produce.
 7. **Score down as readily as up.** A rescore that only ever goes up is not a rescore.
 8. **Stop on purpose.** Declare the stop condition and honour it. Polishing forever is a failure mode, not diligence.
 9. **Scope guard.** "Push to 10" means *this thing, better*. It does not mean a bigger thing. Improvements that expand scope get listed for the user, not built.
@@ -90,6 +90,8 @@ Apply the fixes. Actually edit the artifact.
 ### 5. Verify
 Ground-truth the changes per `references/verification.md`. Code: run it. Copy: read it cold. Numbers: recompute. Claims: check the source.
 
+**Can't verify something?** Split the claim, don't skip it. Say which part you checked and which you couldn't, name the blocker, and mark the unchecked part `unverified` in the scorecard's Open line. A pass that says "three of four claims verified, the fourth needs sheet access from the owner" is worth more than one that quietly implies all four were checked.
+
 ### 6. Rescore & Stop
 Rescore with the **same rubric and weights** — no moving the goalposts.
 
@@ -101,7 +103,34 @@ Rescore with the **same rubric and weights** — no moving the goalposts.
 
 **Then report residual gaps honestly.** A 9/10 with one named unfixable gap is a better result than a claimed 10 with a hidden one.
 
+## Depth Modes
+
+**Choose the mode before step 0. Quick is the default. Standard must be earned.** Read this section before the Output Contract below — that contract is the *Standard* format, and most passes never use it.
+
+### Quick — use unless a Standard trigger fires
+Three to six lines, inline: the score with one cited reason, the single biggest gap, the fix — applied. **No scorecard, no dimension table, no kill shot, no rescore.**
+
+### Standard — only when ALL THREE hold
+1. The artifact is a file, document, page, or feature — **not** a sentence, paragraph, tweet, subject line, or single chat message
+2. It took real work to produce, or real money or reputation rides on it
+3. There is more than one way it can fail
+
+Fewer than three? Quick. **If the scorecard would be longer than the artifact, you are in the wrong mode.**
+
+### Expert Panel — opt-in, and rarely offered
+Derive 3–5 lenses for this artifact's actual field and score against each — see `references/lenses.md`. Mix 2–3 home-field lenses with at least one deliberately foreign one. Materially slower and more expensive.
+
+**Offer it at most ONCE per conversation, and only when the artifact is BOTH high-stakes (public, paid, or reputational) AND substantial (a multi-section document, a shipped feature, a full page — not a single asset).** Both, not either.
+
+Already offered once? Don't offer again. In doubt? Don't offer. **An offer that appears on every pass is noise, and noise gets ignored** — which destroys the signal for the artifact that genuinely warrants it.
+
+> Standard pass, or Expert Panel? Panel derives several field-specific lenses and scores against each — sharper, notably slower and more expensive.
+
+Proceed with Standard as the default if the user doesn't answer.
+
 ## Output Contract
+
+**This is the Standard-mode format.** In Quick mode — the default — skip it entirely and write the three-to-six lines described above.
 
 Terse. The improved artifact is the deliverable; the scorecard is the receipt.
 
@@ -126,30 +155,21 @@ Keep it under 20 lines. If the scorecard is longer than the improvement, you did
 
 **Reader is non-technical?** This contract is still the record, but it is not the opening line — lead with the plain-English verdict and gloss the jargon before the table. See `references/plain-output.md`.
 
-## Depth Modes
+## Declare That You Ran It
 
-**Choose the mode before step 0. Quick is the default. Standard must be earned.**
+Whenever you genuinely run this skill — Quick mode included — end your response with one compact line:
 
-### Quick — use unless a Standard trigger fires
-Three to six lines, inline: the score with one cited reason, the single biggest gap, the fix — applied. **No scorecard, no dimension table, no kill shot, no rescore.**
+```
+Skills used: world-class
+```
 
-### Standard — only when ALL THREE hold
-1. The artifact is a file, document, page, or feature — **not** a sentence, paragraph, tweet, subject line, or single chat message
-2. It took real work to produce, or real money or reputation rides on it
-3. There is more than one way it can fail
+If other declaring skills fired in the same turn, combine them on that **one** comma-separated line: `Skills used: simple-language, world-class`.
 
-Fewer than three? Quick. **If the scorecard would be longer than the artifact, you are in the wrong mode.**
+This is part of the skill, not a host-specific add-on, so it holds identically in Claude Code, Codex, Grok, or a manual invocation. Three conditions, all required:
 
-### Expert Panel — opt-in, and rarely offered
-Derive 3–5 lenses for this artifact's actual field and score against each — see `references/lenses.md`. Mix 2–3 home-field lenses with at least one deliberately foreign one. Materially slower and more expensive.
-
-**Offer it at most ONCE per conversation, and only when the artifact is BOTH high-stakes (public, paid, or reputational) AND substantial (a multi-section document, a shipped feature, a full page — not a single asset).** Both, not either.
-
-Already offered once? Don't offer again. In doubt? Don't offer. **An offer that appears on every pass is noise, and noise gets ignored** — which destroys the signal for the artifact that genuinely warrants it.
-
-> Standard pass, or Expert Panel? Panel derives several field-specific lenses and scores against each — sharper, notably slower and more expensive.
-
-Proceed with Standard as the default if the user doesn't answer.
+- **Only when genuinely used.** Never as decoration, and never when you skipped the skill.
+- **Never instead of the work.** The tag is a receipt, not a substitute for the pass.
+- **One line, at the very end.** It is a footer, not a heading.
 
 ## Red Flags — you are producing flattery, not quality
 
@@ -167,6 +187,8 @@ Proceed with Standard as the default if the user doesn't answer.
 | The artifact shouldn't exist and you said so at the end | Line one, or it doesn't count. |
 | The fix list grew every round | Scope creep wearing a quality costume. Apply Rule 9. |
 | You claimed "fixed" without running/reading it | Rule 6. Go verify. |
+| You couldn't verify, so you asserted anyway | The worst one. Mark it `unverified`, name the blocker, cap that dimension at 7. |
+| You ran the skill and didn't declare it | One line at the end: `Skills used: world-class`. |
 | Round 4+ | You blew the stop condition. Ship it and name what's left. |
 
 ## Common Mistakes

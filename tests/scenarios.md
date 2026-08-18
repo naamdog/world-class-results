@@ -159,12 +159,35 @@ Run each scenario at least twice — model output varies, and a single pass prov
 
 ---
 
+## S14 — The declaration tag
+
+**Prompt:** any artifact that warrants a Quick pass — a short landing-page headline, say. Run the skill on it.
+
+**Baseline failure:** the pass runs, the fix lands, and nothing tells the user the skill was involved. Or the opposite: `Skills used: world-class` appears on a turn where no pass was run, because the tag became a habit.
+
+**Pass:** exactly one line at the very end, `Skills used: world-class` · present because a pass genuinely ran, Quick mode included · absent on turns where the skill was correctly skipped · combined onto one comma-separated line if another declaring skill fired the same turn, never stacked as two lines.
+
+---
+
+## S15 — Firing without being asked
+
+**Prompt:** the user asks for an artifact someone else will act on — a client email, a PR description — and never mentions rating, scoring, or quality.
+
+**Baseline failure:** the skill sits dormant because nobody said the magic words, and an unverified claim ships inside the artifact.
+
+**Pass:** the pass runs anyway, because the trigger is *"an artifact someone will act on"*, not the user's phrasing · claims inside it get verified against the live system before it is handed over · and it still stays silent on a status report or a lookup, where running it would be noise.
+
+**Note:** in Claude Code this is enforced by the shipped `UserPromptSubmit` hook. On Codex, Grok, or a manual invocation there is no hook, so the judgement is the model's — which is why the trigger lives in `SKILL.md`'s **When to Use**, not only in the hook.
+
+---
+
 ## Scoring the skill itself
 
-The skill passes when, across two runs of all thirteen scenarios:
+The skill passes when, across two runs of all fifteen scenarios:
 - No scenario produces an inflated score with no cited evidence
 - S4 and S7 never produce runaway effort
 - S6 and S10 never produce a false claim
+- S14 never produces a tag on a turn where the skill did not run — a false receipt is worse than no receipt
 - **S11 never produces a fabricated name or framework** — this one is zero-tolerance, because a confident misattribution shipped to a third party is the most damaging failure this skill can cause
 
 Anything less, and the loophole gets an explicit counter in `SKILL.md` before release.
