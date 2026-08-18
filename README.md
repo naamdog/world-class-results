@@ -107,6 +107,14 @@ This repo is both a plugin and its own marketplace, which also gets you the `/wo
 
 Update later with `/plugin marketplace update naamdog-skills`.
 
+This also wires a `UserPromptSubmit` hook that fires on every prompt, reminding the agent to verify claims against the live system and run the skill before handing over an artifact — no `settings.json` editing needed, and it travels with the plugin instead of living only in one person's config.
+
+> **Windows by default.** The hook runs `hooks/world-class-reminder.ps1`. On mac/Linux, open `hooks/hooks.json` and swap the command to the POSIX script — both emit the same JSON:
+> ```diff
+> - "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"${CLAUDE_PLUGIN_ROOT}/hooks/world-class-reminder.ps1\""
+> + "command": "sh \"${CLAUDE_PLUGIN_ROOT}/hooks/world-class-reminder.sh\""
+> ```
+
 ### Codex
 
 The installer puts the skill in `~/.agents/skills/`. To scope it to one repo instead, copy `skills/world-class-results/` to `.agents/skills/world-class-results/` at your repo root and commit it — everyone who clones gets it. Codex scans `.agents/skills` from the working directory up to the repo root.
@@ -150,9 +158,11 @@ For small things it goes quick — a score, the biggest gap, the fix, applied in
 | [`references/calibration.md`](skills/world-class-results/references/calibration.md) | The 1–10 ladder and the anti-inflation rules |
 | [`references/lenses.md`](skills/world-class-results/references/lenses.md) | How to derive lenses for any field, the grounding rule, plus ~60 worked examples |
 | [`references/verification.md`](skills/world-class-results/references/verification.md) | What has to be true before you're allowed to say "fixed" |
+| [`references/plain-output.md`](skills/world-class-results/references/plain-output.md) | Presenting a pass to a non-technical reader — verdict first, scorecard after |
 | [`examples/worked-example.md`](skills/world-class-results/examples/worked-example.md) | A full pass on a pricing page: 4/10 → 8.6/10 |
 | [`commands/world-class.md`](commands/world-class.md) | The `/world-class` slash command (Claude Code and Codex) |
 | [`.claude-plugin/`](.claude-plugin/plugin.json) | Plugin manifest and marketplace catalogue |
+| [`hooks/`](hooks/hooks.json) | Ships a `UserPromptSubmit` hook so the skill fires itself on every prompt, once installed as a plugin |
 | [`install.sh`](install.sh) / [`install.ps1`](install.ps1) | Installs the skill for Claude Code, Codex, and Grok Build |
 | [`AGENTS.md`](AGENTS.md) | Codex / Cursor / Amp and other `AGENTS.md` readers |
 | [`GROK.md`](GROK.md) | Grok, in all its forms |

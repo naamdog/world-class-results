@@ -124,6 +124,8 @@ Stopped: <which stop condition fired>
 
 Keep it under 20 lines. If the scorecard is longer than the improvement, you did it backwards.
 
+**Reader is non-technical?** This contract is still the record, but it is not the opening line — lead with the plain-English verdict and gloss the jargon before the table. See `references/plain-output.md`.
+
 ## Depth Modes
 
 **Choose the mode before step 0. Quick is the default. Standard must be earned.**
@@ -183,5 +185,6 @@ Proceed with Standard as the default if the user doesn't answer.
 - `references/calibration.md` — the 1–10 ladder, anti-inflation rules, evidence standard
 - `references/lenses.md` — how to derive the right lenses for any field, plus worked examples
 - `references/verification.md` — ground-truth checks by artifact type
+- `references/plain-output.md` — presenting a pass to a non-technical reader
 - `examples/worked-example.md` — a full pass, start to finish
 - `tests/scenarios.md` — pressure scenarios for validating this skill
