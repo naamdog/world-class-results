@@ -155,21 +155,42 @@ Keep it under 20 lines. If the scorecard is longer than the improvement, you did
 
 **Reader is non-technical?** This contract is still the record, but it is not the opening line — lead with the plain-English verdict and gloss the jargon before the table. See `references/plain-output.md`.
 
-## Declare That You Ran It
+## Declare That You Ran It — the run box
 
-Whenever you genuinely run this skill — Quick mode included — end your response with one compact line:
+Whenever you genuinely run this skill — Quick mode included — add your row to the **run box** at the very end of the response. The box is a fenced code block, visually separate from the reply, one row per skill that actually ran:
 
 ```
-Skills used: world-class
+╭─────────────────────────────────────────────────
+│ SKILLS       simple-language
+│ WORLD CLASS  7.0 → 8.5 · capped by evidence · 2 gaps closed
+│ CHEAP TRICK  5 stages → 1 delegated, 3 kept, 1 inline
+╰─────────────────────────────────────────────────
 ```
 
-If other declaring skills fired in the same turn, combine them on that **one** comma-separated line: `Skills used: simple-language, world-class`.
+Your row is `WORLD CLASS`, and it reports **the pass, not a verdict on the work**: the before/after score, what capped it, and how many gaps you actually closed.
 
-This is part of the skill, not a host-specific add-on, so it holds identically in Claude Code, Codex, Grok, or a manual invocation. Three conditions, all required:
+```
+│ WORLD CLASS  7.0 → 8.5 · capped by evidence · 2 gaps closed
+```
+
+If the pass ran and the artifact needed nothing, say that — it is a real result, not a failure:
+
+```
+│ WORLD CLASS  8.5 · no gap worth closing · stopped round 1
+```
+
+**Rules for the box:**
+
+- **One row per skill that genuinely ran. Omit the row entirely if it didn't.** A full box on a turn where one skill fired is a lie.
+- The box is a **shared container**, not this skill's property. Other tools add their own rows; if you are the only one that ran, the box has one row.
+- **No right-hand border.** Deliberate: a box needing exact padding gets mis-padded eventually, and a crooked box is worse than none.
+- Always a fenced code block, always the last thing in the response — the receipt about the machinery, kept visibly apart from the answer.
+
+Three conditions, all required:
 
 - **Only when genuinely used.** Never as decoration, and never when you skipped the skill.
-- **Never instead of the work.** The tag is a receipt, not a substitute for the pass.
-- **One line, at the very end.** It is a footer, not a heading.
+- **Never instead of the work.** The row is a receipt, not a substitute for the pass.
+- **Last thing in the response.** A footer, not a heading.
 
 ## Red Flags — you are producing flattery, not quality
 
@@ -188,7 +209,7 @@ This is part of the skill, not a host-specific add-on, so it holds identically i
 | The fix list grew every round | Scope creep wearing a quality costume. Apply Rule 9. |
 | You claimed "fixed" without running/reading it | Rule 6. Go verify. |
 | You couldn't verify, so you asserted anyway | The worst one. Mark it `unverified`, name the blocker, cap that dimension at 7. |
-| You ran the skill and didn't declare it | One line at the end: `Skills used: world-class`. |
+| You ran the skill and didn't declare it | Add a `WORLD CLASS` row to the run box at the end. |
 | Round 4+ | You blew the stop condition. Ship it and name what's left. |
 
 ## Common Mistakes
