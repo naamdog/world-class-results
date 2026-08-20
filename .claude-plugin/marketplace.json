@@ -7,10 +7,16 @@
   "plugins": [
     {
       "name": "world-class-results",
-      "source": "./",
+      "source": "./claude-code",
       "description": "Stops AI output landing at 7/10. Rate against a named bar with cited evidence, find the gaps, apply the fixes, verify, rescore, stop.",
       "category": "quality",
-      "tags": ["quality", "review", "critique", "rubric", "calibration"]
+      "tags": [
+        "quality",
+        "review",
+        "critique",
+        "rubric",
+        "calibration"
+      ]
     }
   ]
 }
