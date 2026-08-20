@@ -38,10 +38,9 @@ foreach ($t in ($targets | Select-Object -Unique)) {
     'claude' { Install-To (Join-Path $env:USERPROFILE ".claude\skills\$SkillName")  'Claude Code' }
     'codex'  { Install-To (Join-Path $env:USERPROFILE ".agents\skills\$SkillName")  'Codex      ' }
     'grok'   {
-      # Grok Build discovers the .claude/ skills tree, so the Claude install covers it.
-      $dest = Join-Path $env:USERPROFILE ".claude\skills\$SkillName"
-      if (-not (Test-Path $dest)) { Install-To $dest 'Grok Build ' }
-      else { Write-Host "  covered    Grok Build   ->  $dest (shares the Claude skills tree)" }
+      Install-To (Join-Path $env:USERPROFILE ".grok\skills\$SkillName") 'Grok Build '
+      Write-Host "             plugin route: grok plugin marketplace add naamdog/world-class-results"
+      Write-Host "                          grok plugin install world-class-results --trust"
       Write-Host "             verify with: grok inspect"
     }
   }

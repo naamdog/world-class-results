@@ -36,12 +36,9 @@ for t in "${targets[@]}"; do
     claude) install_to "$claude_dest" "Claude Code" ;;
     codex)  install_to "$HOME/.agents/skills/$SKILL_NAME" "Codex      " ;;
     grok)
-      # Grok Build discovers the .claude/ skills tree, so the Claude install covers it.
-      if [ -d "$claude_dest" ]; then
-        echo "  covered    Grok Build   ->  $claude_dest (shares the Claude skills tree)"
-      else
-        install_to "$claude_dest" "Grok Build "
-      fi
+      install_to "$HOME/.grok/skills/$SKILL_NAME" "Grok Build "
+      echo "             plugin route: grok plugin marketplace add naamdog/world-class-results"
+      echo "                          grok plugin install world-class-results --trust"
       echo "             verify with: grok inspect"
       ;;
     *) echo "unknown target: $t (expected claude, codex, or grok)" >&2; exit 1 ;;

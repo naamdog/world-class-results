@@ -1,6 +1,13 @@
 # World Class Results — Grok
 
-**If you're using Grok Build, you probably don't need this file.** Grok Build discovers instructions, skills, plugins and hooks from your existing agent config — including the `.claude/` tree and the `AGENTS.md` family. Install the skill for Claude Code (`./install.sh claude`, or the plugin route in the [README](README.md)) and Grok Build picks it up. Run `grok inspect` in your repo to confirm what it found before relying on it.
+**If you're using Grok Build, install the plugin instead of pasting this file.**
+
+```powershell
+grok plugin marketplace add naamdog/world-class-results
+grok plugin install world-class-results --trust
+```
+
+Or: `grok plugin marketplace add naamdog/grok-plugins` then `grok plugin install world-class-results --trust`. The installer (`./install.sh grok` / `.\install.ps1 -Target grok`) copies the skill to `~/.grok/skills/`. Run `grok inspect` to confirm what loaded.
 
 This file is for the places with no file to install:
 

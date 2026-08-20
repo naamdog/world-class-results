@@ -2,7 +2,7 @@
 
 **A skill that stops AI output landing at 7/10.**
 
-Works with Claude, Codex, Grok, and anything else you can hand a system prompt.
+Works with Claude Code, Codex, Grok Build, and anything else you can hand a system prompt.
 
 ---
 
@@ -77,7 +77,7 @@ There's still a library of worked examples in the appendix of that file — roug
 
 ## Install
 
-One skill, three homes. Claude Code and Codex both read a `SKILL.md` with `name` + `description` frontmatter, so **the same file drives both** — only the directory differs. Grok Build discovers the Claude skills tree, so it comes along for free.
+One skill, three homes. Claude Code and Codex both read a `SKILL.md` with `name` + `description` frontmatter, so **the same file drives both** — only the directory differs. Grok Build has a native plugin marketplace entry as well.
 
 ### Fastest path — the installer
 
@@ -91,7 +91,7 @@ On Windows: `.\install.ps1`. Both take targets — `./install.sh codex`, `.\inst
 |---|---|---|
 | **Claude Code** | `~/.claude/skills/world-class-results/` | Or use the plugin route below for the `/world-class` command too |
 | **Codex** | `~/.agents/skills/world-class-results/` | Personal skill, available in every project. Project-scoped alternative: `.agents/skills/` in your repo root |
-| **Grok Build** | shares the Claude skills tree | Confirm with `grok inspect` |
+| **Grok Build** | `~/.grok/skills/world-class-results/` | Or use the plugin route below. Confirm with `grok inspect` |
 
 ### Claude Code — as a plugin (recommended)
 
@@ -123,9 +123,23 @@ For always-on project rules rather than an on-demand skill, drop [`AGENTS.md`](A
 
 > Codex's older `~/.codex/prompts/` custom prompts still work — copy [`commands/world-class.md`](commands/world-class.md) there for a `/world-class` command — but OpenAI has deprecated them in favour of skills. Prefer the skill.
 
-### Grok Build
+### Grok Build — as a plugin (recommended)
 
-Grok Build discovers instructions, skills, plugins and hooks from your existing agent config, including the `.claude/` tree and the `AGENTS.md` family — so installing for Claude Code covers it. Run `grok inspect` in your repo to see exactly what it picked up before you rely on it.
+```powershell
+grok plugin marketplace add naamdog/world-class-results
+grok plugin install world-class-results --trust
+```
+
+Or install it with the other naamdog Grok plugins from one marketplace:
+
+```powershell
+grok plugin marketplace add naamdog/grok-plugins
+grok plugin install world-class-results --trust
+```
+
+Start a new Grok session so the skill and hook load. This also wires the `UserPromptSubmit` hook. Confirm with `grok inspect`.
+
+The installer copies the skill to `~/.grok/skills/` as well, if you prefer a personal skill over a plugin.
 
 For grok.com, X, or the xAI API — where there's no file to install — [`GROK.md`](GROK.md) has a paste-in block for Custom Instructions or a system prompt.
 
@@ -163,7 +177,8 @@ For small things it goes quick — a score, the biggest gap, the fix, applied in
 | [`commands/world-class.md`](commands/world-class.md) | The `/world-class` slash command (Claude Code and Codex) |
 | [`.claude-plugin/`](.claude-plugin/plugin.json) | Plugin manifest and marketplace catalogue |
 | [`hooks/`](hooks/hooks.json) | Ships a `UserPromptSubmit` hook so the skill fires itself on every prompt, once installed as a plugin |
-| [`install.sh`](install.sh) / [`install.ps1`](install.ps1) | Installs the skill for Claude Code, Codex, and Grok Build |
+| [`install.sh`](install.sh) / [`install.ps1`](install.ps1) | Installs the skill for Claude Code, Codex, and Grok Build (`~/.grok/skills/`) |
+| [`.grok-plugin/`](.grok-plugin/marketplace.json) | Native Grok Build marketplace so `grok plugin marketplace add naamdog/world-class-results` works |
 | [`AGENTS.md`](AGENTS.md) | Codex / Cursor / Amp and other `AGENTS.md` readers |
 | [`GROK.md`](GROK.md) | Grok, in all its forms |
 | [`PROMPT.md`](PROMPT.md) | Portable prompt, three sizes |
