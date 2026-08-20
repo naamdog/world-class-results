@@ -7,11 +7,20 @@
   "plugins": [
     {
       "name": "world-class-results",
-      "source": "./",
+      "source": {
+        "type": "local",
+        "path": "./grok"
+      },
       "description": "Stops AI output landing at 7/10. Rate against a named bar with cited evidence, find the gaps, apply the fixes, verify, rescore, stop.",
       "category": "quality",
       "homepage": "https://github.com/naamdog/world-class-results",
-      "keywords": ["world class", "quality", "review", "critique", "rubric"]
+      "keywords": [
+        "world class",
+        "quality",
+        "review",
+        "critique",
+        "rubric"
+      ]
     }
   ]
 }

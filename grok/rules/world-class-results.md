@@ -1,0 +1,9 @@
+# World Class Results — always-on rule
+
+If this turn will produce an artifact someone else executes or acts on (a prompt for another agent, a PR or code-review comment, an email, a spec, a plan), then before presenting it: verify every factual claim against the live system (read the file, run the command, query the API) rather than asserting from memory, then run the world-class skill on it. Most of its value is the verification, not the scoring.
+
+Skip entirely for status reports, lookups, and conversation — there is no artifact to rate and running it is noise.
+
+When the skill is genuinely used, add a WORLD CLASS row reporting the pass, e.g. `7.0 to 8.5, capped by evidence, 2 gaps closed`. Render this as a row in the shared run box at the very end of the response: a fenced code block, one row per skill that genuinely ran, left rail only and no right-hand border, always the last thing in the reply so the reader can see where the answer ends and the instrumentation begins. Omit any row whose skill did not run.
+
+State it only when genuinely used — never as decoration, never claim use if skipped.

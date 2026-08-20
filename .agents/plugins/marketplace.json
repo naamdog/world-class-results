@@ -1,0 +1,11 @@
+{
+  "name": "world-class-results",
+  "plugins": [
+    {
+      "name": "world-class-results",
+      "source": { "source": "local", "path": "./plugins/world-class-results" },
+      "policy": { "installation": "AVAILABLE" },
+      "category": "productivity"
+    }
+  ]
+}
